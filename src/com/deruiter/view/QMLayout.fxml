@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-text-fill: white;" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deruiter.controller.QMController">
+   <children>
+      <TabPane layoutX="7.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Home">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="14.0" styleClass="header" text="Quine McCluskey Algorithm" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="b_RunAlgorithm" layoutX="659.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleRunAlgorithm" text="Run Algorithm" AnchorPane.rightAnchor="40.0" />
+                        <HBox layoutX="20.0" layoutY="42.0" prefWidth="200.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="105.0">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" styleClass="generalText" text="f = " />
+                              <TextField fx:id="tf_UserInput" maxWidth="1.7976931348623157E308" prefWidth="560.0" style="-fx-border-color: #CCCCCC;" styleClass="inputBox" />
+                           </children>
+                        </HBox>
+                        <Line endX="760.0" layoutX="10.0" layoutY="10.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0" />
+                        <Line endX="760.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="215.0" />
+                        <Label layoutX="20.0" layoutY="169.0" styleClass="generalText" text="Custom Boolean Function:" AnchorPane.topAnchor="80.0" />
+                        <Label layoutX="30.0" layoutY="179.0" styleClass="generalText" text="Random Boolean Function:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0" />
+                        <HBox layoutX="40.0" layoutY="258.0" prefWidth="200.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="175.0">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" styleClass="generalText" text="Select # of Literals:">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="cb_LiteralCount" prefWidth="75.0" />
+                              <Label maxHeight="1.7976931348623157E308" styleClass="generalText" text="Select # of Terms:">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="cb_TermCount" prefWidth="75.0" />
+                           </children>
+                        </HBox>
+                        <Label layoutX="20.0" layoutY="227.0" styleClass="generalText" text="Boolean Function for Minimization:" />
+                        <ListView fx:id="lv_Solutions" layoutX="23.0" layoutY="360.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC;" styleClass="solutions" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="350.0" />
+                        <Label layoutX="20.0" layoutY="324.0" styleClass="generalText" text="Minimal Solutions:" AnchorPane.leftAnchor="20.0" />
+                        <HBox layoutX="40.0" layoutY="344.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="255.0">
+                           <children>
+                              <Label ellipsisString="" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="20.0" styleClass="generalText" text="f =" />
+                              <TextArea fx:id="ta_FuncToMinimize" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="560.0" style="-fx-border-color: #CCCCCC;">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextArea>
+                           </children>
+                        </HBox>
+                        <Label fx:id="l_TotalSolutionCount" layoutX="134.0" layoutY="324.0" styleClass="generalText" text="(0 Total)" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="313.0" layoutY="38.0" styleClass="header" text="w/ Petrick's Method" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Line endX="760.0" layoutX="31.0" layoutY="226.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="310.0" />
+                        <ProgressBar fx:id="pb_AlgorithmProgress" layoutX="40.0" layoutY="526.0" prefHeight="25.0" prefWidth="200.0" progress="0.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" />
+                        <Button fx:id="b_EnterFunction" layoutX="710.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleEnterFunction" text="Enter" AnchorPane.rightAnchor="40.0" />
+                        <Button fx:id="b_GenerateFunction" layoutX="687.0" layoutY="175.0" mnemonicParsing="false" onAction="#handleGenerateFunction" text="Generate" AnchorPane.rightAnchor="40.0" />
+                        <Label fx:id="l_ProgressPercent" alignment="CENTER" contentDisplay="CENTER" layoutX="391.0" layoutY="529.0" style="-fx-text-fill: #FF8552;" text="0%" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Label>
+                        <Button fx:id="b_Cancel" layoutX="705.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleCancelRun" text="Cancel" AnchorPane.bottomAnchor="274.0" AnchorPane.rightAnchor="40.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Minterm Tables">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ComboBox fx:id="cb_Steps" layoutX="104.0" layoutY="14.0" prefWidth="100.0" />
+                        <Label layoutX="14.0" layoutY="19.0" styleClass="generalText" text="Select Step #:" />
+                        <TableView fx:id="tv_MintermTable" layoutX="62.0" layoutY="75.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="55.0">
+                          <columns>
+                            <TableColumn fx:id="tc_IDs" editable="false" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="125.0" sortable="false" text="ID" />
+                            <TableColumn fx:id="tc_Terms" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="175.0" sortable="false" text="Term" />
+                              <TableColumn fx:id="tc_BitStrings" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="175.0" sortable="false" text="Bit String" />
+                              <TableColumn fx:id="tc_Primes" editable="false" maxWidth="1.7976931348623157E308" minWidth="70.0" prefWidth="100.0" sortable="false" text="Prime?" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Prime Implicant Charts">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="cb_ShowReducedChart" layoutX="45.0" layoutY="23.0" mnemonicParsing="false" styleClass="generalText" text="Show Reduced Chart" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="23.0" />
+                        <TableView fx:id="tv_PrimeImplicantChart" layoutX="34.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="60.0">
+                           <columns>
+                              <TableColumn editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="130.0" sortable="false" text="Primes" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="l_PrimeImplicantChartTitle" alignment="CENTER" layoutX="295.0" layoutY="29.0" styleClass="generalText" text="Prime Implicant Chart" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="About">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="14.0" styleClass="header" text="Quine McCluskey Algorithm" textAlignment="CENTER" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="222.0" styleClass="header" text="Petrick's Method" textAlignment="CENTER" AnchorPane.topAnchor="200.0">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endX="760.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
+                        <Line endX="760.0" layoutX="31.0" layoutY="61.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="240.0" />
+                        <Label layoutX="20.0" layoutY="51.0" prefHeight="43.0" prefWidth="760.0" styleClass="generalText" text="The Quine–McCluskey algorithm is a method used for minimization of Boolean functions that was developed by W.V. Quine and extended by Edward J. McCluskey." wrapText="true" />
+                        <Label layoutX="20.0" layoutY="100.0" styleClass="generalText" text="Method consists of two general steps:" />
+                        <Label layoutX="48.0" layoutY="124.0" styleClass="generalText" text="(1) Find the terms that are candidates for inclusion in a minimal expansion as a Boolean sum of Boolean products. " />
+                        <Label layoutX="48.0" layoutY="140.0" styleClass="generalText" text="(2) Determine which of these terms to actually use." />
+                        <Line endX="760.0" layoutX="31.0" layoutY="61.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="170.0" />
+                        <Line endX="760.0" layoutX="31.0" layoutY="181.0" styleClass="dividers" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="470.0" />
+                        <Label layoutX="20.0" layoutY="241.0" prefHeight="43.0" prefWidth="760.0" styleClass="generalText" text="In Boolean algebra, Petrick's method is a technique for determining all minimum sum-of-products solutions from a prime implicant chart." wrapText="true" />
+                        <Label layoutX="20.0" layoutY="291.0" styleClass="generalText" text="Method consists of six steps:" />
+                        <Label layoutX="48.0" layoutY="314.0" styleClass="generalText" text="(1) Remove all essential prime implicants and the minterms they cover from the chart." />
+                        <Label layoutX="48.0" layoutY="330.0" styleClass="generalText" text="(2) Label the rows of the reduced chart R0, R1, R2 etc." />
+                        <Label layoutX="48.0" layoutY="346.0" styleClass="generalText" text="(3) Form a logic function P that is true when all columns are covered. (P consists of a product of sum terms - one for" />
+                        <Label layoutX="64.0" layoutY="362.0" styleClass="generalText" text=" each column with at least one X.)" />
+                        <Label layoutX="48.0" layoutY="378.0" styleClass="generalText" text="(4) Reduce P to a minimum sum of products by multiplying out and applying rules: " />
+                        <Label layoutX="48.0" layoutY="410.0" styleClass="generalText" text="(5) Each term in the sum represents a solution. Choose the terms with the fewest number of variables. Each of these" />
+                        <Label layoutX="48.0" layoutY="442.0" styleClass="generalText" text="(6) Choose the remaining term or terms that correspond to the fewest total number of literals." />
+                        <Label layoutX="66.0" layoutY="394.0" styleClass="generalText" text="Rule #1: XX = X | Rule #2: X + X = X | Rule #3: X + XY = X | Rule #4: XY + X = X" />
+                        <Label layoutX="66.0" layoutY="426.0" styleClass="generalText" text="terms represents a solution with the minimum number of prime implicants." />
+                        <Label layoutX="20.0" layoutY="531.0" styleClass="generalText" text="Creator:    D. DeRuiter" />
+                        <Label layoutX="20.0" layoutY="515.0" styleClass="generalText" text="Version:    1.0" />
+                        <Label layoutX="20.0" layoutY="499.0" styleClass="generalText" text="Name:      Quine McCluskey Boolean Expression Simplifier (QMBES)" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

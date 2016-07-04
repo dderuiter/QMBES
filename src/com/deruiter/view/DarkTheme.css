@@ -1,0 +1,106 @@
+/**********************************************************************************************************************
+ *
+ * WARNING:
+ * Copyright (c) 2016 by D.DeRuiter
+ * Do not use, modify, or distribute in any way without express written consent.
+ *
+ * PROJECT:
+ * QMBES (Quine McCluskey Boolean Expression Simplifier)
+ *
+ * DESCRIPTION:
+ * CSS styling for web site.
+ *
+ * SOFTWARE HISTORY:
+ * Date          Developer      Modification
+ * ----------    -----------    ------------
+ * 07/02/2016    D. DeRuiter    Initial coding.
+ *
+ **********************************************************************************************************************/
+
+.background {
+    -fx-background-color: #39393A;
+}
+
+.header {
+	-fx-text-fill: #FFFFFF;
+}
+
+.generalText {
+	-fx-text-fill: #E6E6E6;
+}
+
+.dividers {
+	-fx-stroke: #FF8552;
+}
+
+.inputBox {
+	-fx-background-color: #999999;
+	-fx-text-fill: #FFFFFF;
+}
+
+.text-area {
+   -fx-background-color: #999999;
+	-fx-text-fill: #FFFFFF;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: #999999;
+}
+
+.text-area .scroll-pane .viewport {
+    -fx-background-color: #999999;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: #999999;
+}
+
+.solutions {
+	-fx-background-color: #999999;
+	-fx-text-fill: #FFFFFF;
+}
+
+.list-view {
+	-fx-background-color: #999999;
+}
+
+.list-cell:odd {
+    -fx-background-color: #999999;
+	-fx-text-fill: #FFFFFF;
+}
+
+.list-cell:even {
+    -fx-background-color: #808080;
+	-fx-text-fill: #FFFFFF;
+}
+
+.table-view {
+	-fx-background-color: #999999;
+}
+
+.table-row-cell:odd {
+	-fx-background-color: #999999;
+	-fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:even {
+	-fx-background-color: #808080;
+	-fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:selected {
+	-fx-background-color: #000000;
+}
+
+.table-cell:odd {
+	-fx-text-fill: #FFFFFF;
+}
+
+.table-cell:even {
+	-fx-text-fill: #FFFFFF;
+}
+
+.progress-bar{
+	-fx-accent: #0080ff;
+}
